@@ -4,6 +4,7 @@
 
 const express = require('express');
 const app = express();
+const port = 8080;
 const bp = require('body-parser');
 
 app.use(bp.json());
@@ -30,4 +31,4 @@ const beerRouter = require("./routes/beers");
 app.use("/users", userRouter);
 app.use("/beer", beerRouter);
 
-app.listen(2000);
+app.listen(port, ()=> console.log(`Server is running on http://localhost:${port}`));

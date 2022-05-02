@@ -16,9 +16,20 @@ router
     res.json(beers);
   });
 
-  router.get("/", (req: any, res: any) => {
-    
-    res.send(beers);
+router.get("/", (req: any, res: any) => { 
+  res.send(beers);
+});
+
+router.post("/",(req: any, res: any) => {
+  const { beer } = req.body;
+
+  if(!beer) {
+    res.status(418).json({message: 'beer param is required!'});
+  } else {
+    beers = [...beers, beer];
+  }
+
+  res.json(beers);
 });
 
 module.exports = router;
