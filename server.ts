@@ -4,6 +4,7 @@
 
 const express = require('express');
 const app = express();
+const cors = require('cors');
 const port = 8080;
 const bp = require('body-parser');
 
@@ -28,6 +29,7 @@ db.once('open', () => console.log('Connected to Mongoose'));
 const userRouter = require("./routes/users");
 const beerRouter = require("./routes/beers");
 
+app.use(cors());
 app.use("/users", userRouter);
 app.use("/beer", beerRouter);
 
